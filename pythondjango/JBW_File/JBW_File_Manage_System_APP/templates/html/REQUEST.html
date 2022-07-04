@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% block content %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-image: url(image.jpg);
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .navbar-nav{
+            text-align: right;
+            margin-right: 20;
+            
+        }
+        .navbar .navbar-brand{
+            color: rgb(0, 0, 0);
+            font-size: 30px;
+            -webkit-text-fill-color: rgb(255, 255, 255);
+            -webkit-text-stroke-width:.5px;
+        }
+        .navbar .navbar-toggler{
+            color:rgb(255, 255, 255);
+        }
+        .navbar-brand img{
+            width: 80px;
+            height: 70px;
+            margin-top: 2px;
+            margin-right: 20px;
+            color: white;
+            font-size: 20px;
+        }
+        .navbar{
+            background-color: #0f617a! important;
+            z-index: 2;
+        }
+        .navbar .navbar-nav li a{
+            color: #fff;
+        }
+        .nav-link{
+            font-size: 20px;
+            margin: 3px;
+            color: white;
+            font-weight: 500;
+            z-index: 1;
+
+        }
+        .van:hover{
+            font-weight: 600;
+            border: 1px solid #fff;
+            border-width: auto;
+
+            
+        }
+        .navbar .nav-item .dropdown-menu .dropdown-item:hover{
+            color : rgb(0, 0, 0)! important;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid #fff;
+            opacity: 1;
+            transition: .2s ease-in;
+            
+        }
+        .navbar .nav-item .dropdown-menu {
+            color : rgb(0, 0, 0)! important;
+            background-color: rgb(0, 0, 0);
+            border: 1px solid #fff;
+            opacity: 1;
+            transition: .2s ease-in;
+        }
+
+        .nav-item-dropdown{
+            background-color: rgb(255, 255, 255);
+            transition: .2s ease-in;
+            
+
+        }
+
+        @media screen and (max-width: 1219px){
+            .name{
+            display: none!important;
+        }
+        }
+
+    </style>
+
+    <body>
+        <div class="menu-bar">
+            <nav class="navbar navbar-expand-lg navbar-dark stic">
+                <a class="navbar-brand"><img src="{% static 'Media/LOGO.png' %}"></a>
+                <a class="navbar-brand custom-brand name" style="text-align: left;">JBW FILE MANAGEMENT SYSTEM</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link van" href="{% url 'delivery' %}">Delivery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link van" href="{% url 'tools' %}">Tools</a>
+                        </li>
+                    </li>      
+                </div>
+            </nav>
+          </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-1 ml-2 mt-2">
+                    <a href="{% url 'mainwindow' %}"><img src="{% static 'Media/21.png' %}" style="height: 70px;"/></a>
+                </div>
+                <div class="card col-md-7 mt-3 mx-auto p-0" style="height: 750px; border-radius: 10px; box-shadow: 0px 0px 10px 0px #000; font-weight: bold;">
+                    <div class="card-header">
+                        <div class="text-center">
+                            REQUESTED QUOTATION
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="">
+                            <div class="form-group">
+                                {% csrf_token %}
+                                <div class="input-group mb-4 mt-4">                                    
+                                    <label for="">Company Name : </label> {{form.company_name}}
+                                </div>
+                                <div class="input-group mb-4">                                   
+                                    <label for="">Address : </label> {{form.address}}
+                                </div>
+                                <div class="input-group mb-4">
+                                    <label for="">Purchasing Officer : </label> {{form.purchasing_officer}}
+                                </div>
+                                <div class="input-group mb-4">
+                                    <label for="">Engineer In Charge : </label> {{form.eic}}
+                                </div>
+                                <div class="input-group mb-4">
+                                    <label for="">Subject : </label> {{form.subject}}
+                                </div>
+                                <div class="input-group mb-4">
+                                    <label for="">Project Name : </label>  {{form.project_name}}
+                                </div>
+                                <div class="input-group mb-4">
+                                    <label for="">Price of Project : </label> {{form.price}}
+                                </div>
+                                <div class="input-group mb-4">
+                                    <label for="">Terms of Payment : </label> {{form.top}}
+                                </div>
+                                <div class="input-group mb-4">
+                                    <label for="">Status : </label> {{form.status}}
+                                </div>
+                                <div class="col-sm-11"></div>
+                                    <button type="submit" class="btn btn-primary col-sm-12" id="button"><a href=""></a>Submit</b1>
+                                <div class="col-sm-1"></div> 
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script>
+            var form_fields = document.getElementsByTagName('input')
+            form_fields[1].placeholder='Enter Company Name..';
+            form_fields[2].placeholder='Enter Company Address ...';
+            form_fields[3].placeholder='Enter Purchasing Officer...';
+            form_fields[4].placeholder='Enter Engineer In Charge..';
+            form_fields[5].placeholder='Enter Subject...';
+            form_fields[6].placeholder='Enter Project Name...';
+            form_fields[7].placeholder='Enter Price of the project..';
+            form_fields[8].placeholder='Enter Terms of Payment...';
+            
+
+
+            for (var field in form_fields){	
+            form_fields[field].className += ' form-control'
+            }
+        </script>
+    </body>
+{% endblock %}
+</html>

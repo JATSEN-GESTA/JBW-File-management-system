@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% block content %}    
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+            background-size: cover;
+            background-attachment: fixed;
+		}
+		.user_card {
+			width: 600px;
+            height: 550px;
+			margin-top: auto;
+			margin-bottom: 250px;
+			background: #6fb3d3;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+        .messages {
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+			
+		}
+
+		.login_btn {
+			width: 100%;
+			background: #33ccff !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+		#messages{
+			background-color: grey;
+			color: #fff;
+			padding: 10px;
+			margin-top: 10px;
+		}
+
+		.navbar-nav{
+			text-align: center;
+			margin-right: 20;
+		
+		}
+		.navbar .navbar-brand{
+			color: rgb(0, 0, 0);
+			font-size: 30px;
+			-webkit-text-fill-color: rgb(255, 255, 255);
+			-webkit-text-stroke-width:.5px;
+			text-align: center;
+			
+		}
+		.navbar .navbar-toggler{
+			color:rgb(255, 255, 255);
+			text-align: center;
+		}
+		.navbar-brand img{
+			width: 80px;
+			height: 70px;
+			margin-top: 2px;
+			margin-right: 20px;
+			color: white;
+			font-size: 20px;
+			text-align: center;
+		}
+		.navbar{
+			background-color: #0f617a! important;
+			z-index: 2;
+			text-align: center;
+		}
+
+
+	</style>
+
+</head>
+<body id="bg"style="background-image:url('{% static 'Media/kamoterss.png'%}')">
+	<div class="menu-bar">
+        <nav class="navbar navbar-expand-lg navbar-dark stic">
+            <a class="navbar-brand"><img src="{% static 'Media/LOGO.png' %}"></a>
+            <a class="navbar-brand custom-brand name" style="text-align: left;">WELCOME TO JBW FILE MANAGEMENT SYSTEM</a> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
+	{% for message in messages %}
+        <p id="messages">{{message}}</p>
+    {% endfor%}
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+                    
+
+
+					<h3 id="form-title">LOGIN</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="">
+                        {% csrf_token %}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+								<input type="password" name="password" placeholder="Password..." class="form-control" >
+						</div>
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn login_btn" type="submit" value="Login">
+				   			</div>
+					</form>
+
+				</div>
+                
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
+					</div>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}
+</html>

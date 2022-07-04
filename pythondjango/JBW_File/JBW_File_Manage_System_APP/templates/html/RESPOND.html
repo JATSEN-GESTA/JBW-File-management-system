@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>RESPOND QUOTATION</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/integration
+            emailjs.init('user_KgGA7aYHhXlMzVq0mMafj');
+        })();
+    </script>
+    <script src="{% static 'JS/respondcss.js' %}"></script>
+  </head>
+
+  <style>
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-image: url(image.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.navbar-nav{
+    text-align: right;
+    margin-right: 20;
+    
+}
+.navbar .navbar-brand{
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-text-stroke-width:.5px;
+}
+.navbar .navbar-toggler{
+    color:rgb(255, 255, 255);
+}
+.navbar-brand img{
+    width: 80px;
+    height: 70px;
+    margin-top: 2px;
+    margin-right: 20px;
+    color: white;
+    font-size: 20px;
+}
+.navbar{
+    background-color: #0f617a! important;
+    z-index: 2;
+}
+.navbar .navbar-nav li a{
+    color: #fff;
+}
+.nav-link{
+    font-size: 20px;
+    margin: 3px;
+    color: white;
+    font-weight: 500;
+    z-index: 1;
+
+}
+.van:hover{
+    font-weight: 600;
+    border: 1px solid #fff;
+    border-width: auto;
+
+    
+}
+.navbar .nav-item .dropdown-menu .dropdown-item:hover{
+    color : rgb(0, 0, 0)! important;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #fff;
+    opacity: 1;
+    transition: .2s ease-in;
+    
+}
+.navbar .nav-item .dropdown-menu {
+    color : rgb(0, 0, 0)! important;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid #fff;
+    opacity: 1;
+    transition: .2s ease-in;
+}
+
+.nav-item-dropdown{
+    background-color: rgb(255, 255, 255);
+    transition: .2s ease-in;
+    
+
+}
+
+@media screen and (max-width: 1219px){
+    .name{
+    display: none!important;
+}
+}
+
+.form-container {
+    height: 650px;
+    padding: 0px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+    position: absolute;
+}
+
+  </style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark stic">
+        <a class="navbar-brand"><img src="{% static 'Media/LOGO.png' %}"></a>
+        <a class="navbar-brand custom-brand name" style="text-align: left;">JBW FILE MANAGEMENT SYSTEM</a>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 ml-2">
+                <a href="{% url 'mainwindow' %}"><img src="{% static 'Media/21.png' %}" style="height: 70px; padding-top: 10px;"/></a>
+            </div>
+            <div class="col-md-5 p-sm-1 p-md-0 p-lg-4">
+                <div class="row">
+                    <div class="card col-md-4 mt-5 p-0 mx-auto" style="height: 300px; border-radius: 10px; box-shadow: 0px 0px 10px 0px #000;">
+                        <div class="card-header">
+                            <div class="text-center" style="font-weight: bold;">
+                                SENDER
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form class="contact-form1">
+                                <div class="form-group">
+                                <label for="exampleFormControlInput1">Email address:</label>
+                                <input type="email" class="form-control" id="from_email" placeholder="name@example.com">
+                                <label for="exampleFormControlInput1"><br><br>Password:</label>
+                                <input type="password" class="form-control" id="from_password" placeholder="Enter Password">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card col-md-4 mt-5 p-0 mx-auto" style="height: 300px; border-radius: 10px; box-shadow: 0px 0px 10px 0px #000;">
+                        <div class="card-header">
+                            <div class="text-center" style="font-weight: bold;">
+                                RECEIVER
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form class="contact-form2">
+                                <div class="form-group">
+                                <label for="exampleFormControlInput1"><br><br>Email address:</label>
+                                <input type="email" class="form-control" id="to_email" placeholder="name@example.com">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 p-sm-4 p-md-0 p-lg-4">
+                <div class="row">
+                    <form class="form-container col-md-9 mt-5 pt-0 pb-0 pl-0" style="background-color: white;">
+                        <div id="contact-form" class="form-floating">
+                            <input type="text" class="form-control" id="sub" placeholder="Subject">
+                            <textarea class="form-control" id="msg" rows="3" style="resize: none; height: 400px;"></textarea>
+                            <label for="formFileMultiple" class="form-label mt-4">Add Attachments</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8"></div>
+                                <form method="post">
+                                    <button type="button" onclick ='sendMail()'id="submit" class="btn btn-primary col-sm-3 mt-5">Submit</b1>
+                                </form>
+                            <div class="col-sm-1"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+{% endblock %}
+
+</html>

@@ -1,0 +1,218 @@
+<html lang="en">
+{% load static %}
+{% block content %}
+<head>
+    <title>Main Window</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'CSS/design-MW.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body id="bg"style="background-image:url('{% static 'Media/kamoterss.png'%}')"></body>   
+    <!-----------------------NAV-------------------------->
+    <div class="menu-bar">
+        <nav class="navbar navbar-expand-lg navbar-dark stic">
+            <a class="navbar-brand"><img src="{% static 'Media/LOGO.png' %}"></a>
+            <a class="navbar-brand custom-brand name" style="text-align: left;">JBW FILE MANAGEMENT SYSTEM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+               
+                <li class="nav-item">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link van" href="{% url 'request' %}">REQUESTED QUOTATION</a>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link van" href="{% url 'respond' %}">RESPOND</a>
+                  </li>
+              <li class="nav-item">
+                  <a class="nav-link van" data-toggle="modal" data-target="#exampleModalCenter3">LOGOUT</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+      </div>
+    <!----------------------------TABLE--------------------------------------->
+    <div class="table-responsive">
+        <div>
+          <br>
+        </div>
+      <div class="container table">
+        <table id="customers">
+          <tr>
+            <th>Order No.</th>
+            <th>Date</th>
+            <th>Facilitator</th>
+            <th>Company Name</th>
+            <th>Company Address</th>
+            <th>Purchasing Officer</th>
+            <th>Engineer In-Charge</th>
+            <th>Subject</th>
+            <th>Unit Price</th>
+            <th>Project Name</th>
+            <th>Terms of Project</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Delete</th>
+            <th>PDF GENERATOR</th>
+          </tr>
+          {% for quotation in object %}
+          <tr>
+            <td>{{quotation.id}}</td>
+            <td>{{quotation.date}}</td>
+            <td>{{ user }}</td>
+            <td>{{quotation.company_name}}</td>
+            <td>{{quotation.address}}</td>
+            <td>{{quotation.purchasing_officer}}</td>
+            <td>{{quotation.eic}}</td>
+            <td>{{quotation.subject}}</td>
+            <td>{{quotation.price}}</td>
+            <td>{{quotation.project_name}}</td>
+            <td>{{quotation.top}}</td>
+            <td>{{quotation.status}}</td>
+            <td><a href ="{% url 'update' quotation.id %}" class="btn btn-sm btn-info">Update</a></td>
+            <td><a href ="{% url 'delete' quotation.id %}" class="btn btn-sm btn-danger">Delete</a></td>
+            <td><a href ="{% url 'requestpdf' quotation.id %}" class="btn btn-sm btn-danger">Generate PDF</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+
+    <!-----------------------------------BUTTON------------------------------------------>
+      <div class="text-right">
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Edit Order Data</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              </div>
+              <div class="modal-body">
+                <div class="card-body">
+                  <form>
+                      <div class="form-group">
+                        <div class="text-left">
+                          <label for="exampleInputEmail1">Order No.:</label>
+                          <input type="email" class="form-control mx-auto" id="exampleInputEmail1" placeholder="Enter Order No.">
+                          <label for="exampleInputEmail1">Date:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter Address">
+                          <label for="exampleInputEmail1">Company Name:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail4" placeholder="Enter Company Name">
+                          <label for="exampleInputEmail1">Company Address:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail5" placeholder="Company Address">
+                          <label for="exampleInputEmail1">Purchasing Officer:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail6" placeholder="Enter Purchasing Officer">
+                          <label for="exampleInputEmail1">Engineer In Charge:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail7" placeholder="Enter Engineer In Charge">
+                          <label for="exampleInputEmail1">Subject:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail8" placeholder="Enter Subject">
+                          <label for="exampleInputEmail1">Unit Price:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail8" placeholder="Enter Unit Price">
+                          <label for="exampleInputEmail1">Project Name:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail8" placeholder="Enter Project Name">
+                          <label for="exampleInputEmail1">Terms of Project:</label>
+                          <input type="email" class="form-control" id="exampleInputEmail8" placeholder="Enter Terms of Project">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a href="{% url 'mainwindow' %}" class="btn btn-primary" role="button">Update</a>
+              </div>
+          </div>
+          </div>  
+    </div>
+    <div class="text-right">
+      <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Delete Order Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+          <form method="POST" action="">
+            {% csrf_token %}
+            <div class="modal-body">
+              <div class="card-body">
+                    <div class="form-group">
+                      <div class="text-left">
+                        <label for="exampleInputEmail1">ID.</label>
+                        <input type="text" class="form-control mx-auto" name="DelOrderNum" placeholder="Enter Order No.">
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a href=" {% url 'mainwindow' %}" class="btn btn-primary" role="button">Delete</a>
+            </div>
+          </form>
+        </div>
+        </div>  
+    </div>
+    <div class="text-right">
+      <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Logout</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                Are You Sure You Want To Logout Your Account?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <a href=" {% url 'logoutUser' %}" class="btn btn-primary" role="button">Logout</a>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!-------------------------------------------------------------->
+    <footer class="site-footer">
+      <div class="container col-md-12 mt-5 p-lg-5">
+        <div class="row">
+          <div class="col-sm-12">
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-1 mb-4">
+            <a class="custom-brand foot"><img src="{% static 'Media/LOGO.png' %}" alt="JBW" class="responsive"></a>
+          </div>
+          <div class="col-sm-11 mb-5" style="text-align: center;">
+            <b>JBW FILE MANAGEMENT SYSTEM</b><br>
+          Dasmariñas City, Cavite,
+          Philippines<br>
+          CONTACTS: <a class="fa fa-facebook" href="https://www.facebook.com/jatsen.gesta"></a> │
+          <a class="fa fa-google" href="https://mail.google.com/mail/u/0/#search/gestajatsen%40gmail.com"></a> <br>
+          </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+{% endblock %}
+</html>
