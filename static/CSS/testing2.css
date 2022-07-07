@@ -1,0 +1,168 @@
+body {
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+*{
+    margin:0px;
+    padding: 0px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+   
+}
+body{
+    overflow:visible;
+}
+
+.card-title{
+    color:rgb(0, 0, 0);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 27px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-text{
+    color:rgb(0, 0, 0);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12;
+}
+
+.container{
+    z-index: 1;
+}
+
+.card {
+    height: 550px;
+    width: 500px;
+}
+
+.centered {
+    position: absolute;
+    top: 31%;
+    left: 42%;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.coord4 {
+    position: absolute;
+    top: 28%;
+    bottom: 50%;
+    left: 15%;
+    right: 50%;
+    font-weight: bold;
+}
+
+.coord5{
+    position: absolute;
+    top: 33%;
+    bottom: 50%;
+    left: 15%;
+    right: 10%;
+    font-size: 15pt;
+}
+
+.coord6 {
+    position: absolute;
+    top: 43%;
+    bottom: 50%;
+    left: 15%;
+    right: 50%;
+    font-weight: bold;
+}
+
+.coord7 {
+    position: absolute;
+    top: 48%;
+    bottom: 50%;
+    left: 15%;
+    right: 50%;
+    font-size: 15pt;
+}
+
+.coord7_1 {
+    position: absolute;
+    top: 58%;
+    bottom: 50%;
+    left: 15%;
+    right: 34%;
+    font-weight: bold;
+}
+
+.coord7_2 {
+    position: absolute;
+    top: 63%;
+    bottom: 50%;
+    left: 15%;
+    right: 34%;
+    font-size: 15pt;
+}
+
+
+.coord9 {
+    position: absolute;
+    top: 74%;
+    bottom: 10%;
+    left: 15%;
+    right: 0%;
+}
+
+.coord10 {
+    position: absolute;
+    top: 88%;
+    bottom: 50%;
+    left: 16%;
+    right: 0%;
+}
+
+.coord11 {
+    position: absolute;
+    top: 87%;
+    bottom: 10%;
+    left: 70%;
+    right: -65%;
+}
+
+.coord10:hover {text-decoration: underline;}
+.button1 {
+    padding: 10px 122px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgb(0, 99, 248);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px rgb(0, 41, 155);
+}
+
+.button1:hover {background-color: rgb(1, 49, 207);}
+.button1:active {
+    background-color: rgb(0, 99, 248);
+    box-shadow: 0 1px #666;
+    transform: translateY(4px);
+}
+
+.button2 {
+    padding: 5px 20px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgb(0, 99, 248);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px rgb(0, 41, 155);
+}
+
+.button2:hover {background-color: rgb(1, 49, 207);}
+
+.button2:active {
+    background-color: rgb(0, 99, 248);
+    box-shadow: 0 1px #666;
+    transform: translateY(4px);
+}
